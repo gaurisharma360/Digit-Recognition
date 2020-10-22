@@ -29,6 +29,12 @@ while True:
         img[:,:] = 255
     elif cv2.waitKey(1) == ord('p'):
         out = img[:,:]
-        out_resize=cv2.resize(out,(28,28)).reshape(1,28,28,-1)
-        print(pr.predict_classes(out_resize))
+        out_resized = cv2.resize(out, (28, 28))
+        out_resized = cv2.cvtColor(out_resized, cv2.COLOR_BGR2GRAY)
+        img_arr = np.array(out_resized)
+        img_arr = img_arr.flatten()
+        img_arr.reshape(784, -1)
+        # print("\n\n\n", img_arr.shape)
+        # out_resize=cv2.resize(out,(28,28)).reshape(1,28,28,-1)
+        print(pr.predict_classes(img_arr[np.newaxis, :]))
 cv2.destroyAllWindows()
