@@ -20,7 +20,6 @@ def demo(event,x,y,flags,param):
 
 
 cv2.setMouseCallback(windowName,demo)
-
 while True:
     cv2.imshow(windowName,img)
     if cv2.waitKey(1) == ord('q'):
